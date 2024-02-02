@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>GitHub?</title>
+    <title>GitHub</title>
 </head>
 <body>
-    sample?
+    
 </body>
-</html>
+</html>gitpu
