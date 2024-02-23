@@ -16,7 +16,7 @@ class App
         unset($url[0]);
 
     }else{
-        $this->controller = '404';
+        $this->controller = '_404';
 
     }
    }
