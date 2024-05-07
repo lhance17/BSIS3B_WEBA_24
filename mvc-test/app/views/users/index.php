@@ -14,15 +14,22 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
+      <th></th>
     </tr>
     <?php if ($users != null) { ?>
+
       <?php foreach ($users as $item) { ?>
         <tr>
           <td><?= $item->firstname ?></td>
           <td><?= $item->lastname ?></td>
           <td><?= $item->email ?></td>
+          <td>
+            <a href="<?= ROOT ?>/users/edit/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
+            <a href="<?= ROOT ?>/users/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
+          </td>
         </tr>
       <?php } ?>
+
     <?php } else { ?>
       <tr>
         <td colspan="3">

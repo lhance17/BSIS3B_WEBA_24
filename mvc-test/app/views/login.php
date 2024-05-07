@@ -3,7 +3,7 @@
 <div class="container mt-5">
 
   <form action="" method="POST" class="w-50 mx-auto">
-    <h2>User Registration</h2>
+    <h2>Login</h2>
 
     <?php if (!empty($errors)): ?>
 
@@ -19,24 +19,18 @@
     <?php endif; ?>
 
     <div class="mb-2">
-      <label for="">First Name</label>
-      <input name="firstname" value="<?= get_var('firstname') ?>" type="text" class="form-control">
-    </div>
-    <div class="mb-2">
-      <label for="">Last Name</label>
-      <input name="lastname" value="<?= get_var('lastname') ?>" type="text" class="form-control">
-    </div>
-    <div class="mb-2">
       <label for="">Email</label>
-      <input name="email" value="<?= get_var('email') ?>" type="text" class="form-control">
-    </div>
-    <div class="mb-2">
-      <label for="">Password</label>
-      <input name="password" value="<?= get_var('password') ?>" type="password" class="form-control">
+      <input type="text" name="email" value="<?= get_var('email') ?>" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
+    <div class="mb-2">
+      <label for="">Password</label>
+      <input type="password" name="password" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
   </form>
+
 </div>
 
 <?php include PATH . "partials/footer.php" ?>

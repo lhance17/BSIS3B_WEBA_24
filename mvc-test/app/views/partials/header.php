@@ -20,17 +20,32 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
-          </li>
+
+
+
+          <?php if (!empty($_SESSION['USER'])): ?>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
+            </li>
+
+          <?php endif; ?>
+
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+
+        <?php if (empty($_SESSION['USER'])): ?>
+
+          <a href="<?= ROOT ?>/login" class="btn btn-secondary">Login</a>
+
+        <?php else: ?>
+
+          <span class="me-3">Hello! <?= $_SESSION['USER']->firstname ?>   <?= $_SESSION['USER']->lastname ?></span>
+          <a href="<?= ROOT ?>/logout" class="btn btn-secondary">Logout</a>
+
+        <?php endif; ?>
       </div>
     </div>
   </nav>
