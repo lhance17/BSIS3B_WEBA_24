@@ -11,6 +11,6 @@ spl_autoload_register(functiom ($class_name)) {
 
     require '../app/models/' . $class_name . '.php';
 
-});
+};
 
 
