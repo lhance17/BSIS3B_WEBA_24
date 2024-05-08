@@ -29,7 +29,7 @@ class Users extends Controller
 
       if ($user->validate($_POST)) {
 
-        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $_POST['password']= password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $user->insert($_POST);
 

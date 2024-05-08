@@ -14,14 +14,16 @@ class Login extends Controller
       $row = $user->first($arr);
 
       if ($row) {
-
-        if (password_verify($_POST['password'], $row->password)) {
+          
+        if (password_verify($_POST['password'], $row->password)){
 
           Auth::authenticate($row);
           redirect('home');
         } else {
           $errors['errors'] = 'Email or Password is not valid.';
         }
+
+
       } else {
         $errors['errors'] = 'Email or Password is not valid.';
       }
