@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= APP_NAME ?></title>
+    <title>404</title>
 </head>
 <body>
-    <h1>Home Page</h1>
+    <h1>hotfpound</h1>
 </body>
 </html>
