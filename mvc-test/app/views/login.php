@@ -3,7 +3,7 @@
 <div class="container mt-5">
 
   <form action="" method="POST" class="w-50 mx-auto">
-    <h2>Login</h2>
+    <h2 class="login-title">Login</h2>
 
     <?php if (!empty($errors)): ?>
 

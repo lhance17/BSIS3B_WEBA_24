@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>mvc-test</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Bootstrap demo</title>
+
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/style.css">
 </head>
 
 <body>
@@ -42,7 +44,13 @@
 
         <?php else: ?>
 
-          <span class="me-3">Hello! <?= $_SESSION['USER']->firstname ?>   <?= $_SESSION['USER']->lastname ?></span>
+          <span class="me-3">
+            <img class="rounded-circle" width="30px" height="30px" src="<?= ROOT ?>/<?= $_SESSION['USER']->image ?> "
+              alt="">
+            <?= $_SESSION['USER']->firstname ?>
+            <?= $_SESSION['USER']->lastname ?>
+          </span>
+
           <a href="<?= ROOT ?>/logout" class="btn btn-secondary">Logout</a>
 
         <?php endif; ?>
