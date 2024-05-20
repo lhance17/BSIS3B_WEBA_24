@@ -14,6 +14,7 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
+      <th>Image</th>
       <th></th>
     </tr>
     <?php if ($users != null) { ?>
@@ -23,6 +24,9 @@
           <td><?= $item->firstname ?></td>
           <td><?= $item->lastname ?></td>
           <td><?= $item->email ?></td>
+          <td>
+            <img width="50px" height="50px" src="<?= ROOT ?>/<?= $item->image ?>" alt="">
+          </td>
           <td>
             <a href="<?= ROOT ?>/users/edit/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
             <a href="<?= ROOT ?>/users/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>

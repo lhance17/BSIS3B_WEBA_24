@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
 
-  <form action="" method="POST" class="w-50 mx-auto">
+  <form action="" method="POST" enctype="multipart/form-data" class="w-50 mx-auto">
     <h2>User Registration</h2>
 
     <?php if (!empty($errors)): ?>
@@ -17,6 +17,22 @@
       </div>
 
     <?php endif; ?>
+
+    <input type="hidden" name="token">
+
+    <div class="mb-2">
+      <label for="">Image</label>
+      <input type="file" name="image" class="form-control">
+    </div>
+
+    <div class="mb-2">
+      <label for="">Role</label>
+      <select name="role" class="form-control">
+        <option value="">Choose a Role</option>
+        <option <?= get_select('role', 'Admin') ?> value="Admin">Admin</option>
+        <option <?= get_select('role', 'User') ?> value="User">User</option>
+      </select>
+    </div>
 
     <div class="mb-2">
       <label for="">First Name</label>
