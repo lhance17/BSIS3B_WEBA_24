@@ -1,6 +1,6 @@
 <?php
 
-define('APP_NAME', 'MVC TEST');
+define('APP_NAME', 'LIBRARY CATALOGUE');
 define('ROOT', 'http://localhost/bsis3b_weba_24/mvc-test/public');
 define('PATH', 'C:/xampp/htdocs/BSIS3B_WEBA_24/mvc-test/app/views/');
 

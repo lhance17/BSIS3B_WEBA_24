@@ -33,6 +33,9 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/books">Books</a>
+            </li>
 
           <?php endif; ?>
 
