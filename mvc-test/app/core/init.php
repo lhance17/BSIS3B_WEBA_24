@@ -6,6 +6,7 @@ require 'Database.php';
 require 'Controller.php';
 require 'Model.php';
 require 'App.php';
+require 'Books_db.php';
 
 spl_autoload_register(function ($class_name) {
 

@@ -1,6 +1,6 @@
 <?php
 
-class Model extends Database 
+class models extends Books_db 
 {
   public $errors = [];
 
