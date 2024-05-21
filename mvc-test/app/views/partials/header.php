@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>mvc-test</title>
+  <title>Bootstrap demo</title>
 
   <link rel="stylesheet" href="<?= ROOT ?>/assets/bootstrap/css/bootstrap.min.css">
 
@@ -32,6 +32,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/books">Books</a>
             </li>
 
           <?php endif; ?>
