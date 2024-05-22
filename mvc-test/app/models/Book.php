@@ -1,6 +1,6 @@
 <?php
 
-class Books extends models
+class Book extends Model
 {
   public function validate($data)
   {
