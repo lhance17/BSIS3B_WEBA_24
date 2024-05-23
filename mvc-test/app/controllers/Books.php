@@ -6,6 +6,7 @@ class Books extends Controller
   {
     if (!Auth::logged_in()) {
       redirect('login');
+      redirect('login');
     }
 
     $x = new Book();
@@ -15,7 +16,7 @@ class Books extends Controller
       'books' =>  $rows
     ]);
   }
- 
+
   public function create(){
     if (count($_POST) > 0){
       $book = new Book;

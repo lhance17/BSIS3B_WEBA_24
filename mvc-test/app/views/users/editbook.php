@@ -2,8 +2,8 @@
 
 <div class="container mt-5">
 
-  <form action="" method="POST" enctype="multipart/forms-data" class="w-50 mx-auto">
-    <h2>Add New Book</h2>
+  <form action="" method="POST" class="w-50 mx-auto">
+    <h2>Edit User</h2>
 
     <?php if (!empty($errors)): ?>
 
@@ -18,27 +18,24 @@
 
     <?php endif; ?>
 
-    <input type="hidden" name="token">
-
-    <div class="mb-2">
-      <label for="">Image</label>
-      <input type="file" name="image" class="forms-control">
-    </div>
+  
 
     <div class="mb-2">
       <label for="">Title</label>
-      <input name="Title" value="<?= get_var('Title') ?>" type="text" class="forms-control">
+      <input name="Title" value="<?= $books->Title ?>" type="text" class="form-control">
     </div>
     <div class="mb-2">
       <label for="">Author</label>
-      <input name="Author" value="<?= get_var('Author') ?>" type="text" class="forms-control">
+      <input name="Author" value="<?= $books->Author ?>" type="text" class="form-control">
     </div>
     <div class="mb-2">
       <label for="">Year_Publish</label>
-      <input name="Year_Publish" value="<?= get_var('Year_Publish') ?>" type="text" class="forms-control">
+      <input name="email" value="<?= $book->Year_Publish ?>" type="email" class="form-control">
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    
+
+    <button type="submit" class="btn btn-primary">Update</button>
   </form>
-    <class="books-table">
+</div>
 
 <?php include PATH . "partials/footer.php" ?>

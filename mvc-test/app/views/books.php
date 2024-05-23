@@ -1,14 +1,48 @@
 <?php include PATH . "partials/header.php" ?>
 
-<div class="container mt-5">
 
-  <div class="d-flex justify-content-between align-items-center">
 
-    <h2>List of Users Books</h2>
-    <a href="<?= ROOT ?>/users/addbooks" class="btn btn-primary">Add New Book</a>
+<form action="<?= ROOT ?>/books/create" method="POST" enctype="multipart/form-data" class="w-50 mx-auto">
+    <h2>Add Books</h2>
 
-  </div>
+    <?php if (!empty($errors)): ?>
 
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+        <?php foreach ($errors as $error): ?>
+          <?= $error . "<br>" ?>
+        <?php endforeach; ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+    <?php endif; ?>
+
+    <div class="mb-2">
+      <label for="">Image</label>
+      <input type="file" name="Picture" class="form-control">
+    </div>
+
+
+
+    <div class="mb-2">
+      <label for="">Title</label>
+      <input name="Title" value="<?= get_var('Title') ?>" type="text" class="form-control">
+    </div>
+    <div class="mb-2">
+      <label for="">Author</label>
+      <input name="Author" value="<?= get_var('Author') ?>" type="text" class="form-control">
+    </div>
+    <div class="mb-2">
+      <label for="">Year_Publish</label>
+      <input name="Year_Publish" value="<?= get_var('Year_Publish') ?>" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+  <div class="container mt-5">
+  <h2 class="books-title">Lists of Books</h2>
+</div>
+  <class="books-table">
 <table class="table table-striped-columns table-hover table-bordered table mx-auto p-2" style="width: 1000px ">
 <tr>
       <th>Title</th>
@@ -28,8 +62,8 @@
             <img width="50px" height="50px" src="<?= ROOT ?>/assets/uploads/books_img/<?= $item->id ?>/<?= $item->Picture ?>" alt="">
           </td>
           <td>
-            <a href="<?= ROOT ?>/users/edit/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
-            <a href="<?= ROOT ?>/users/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="<?= ROOT ?>/users/editbook/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
+            <a href="<?= ROOT ?>/users/deletebook/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
       <?php } ?>
