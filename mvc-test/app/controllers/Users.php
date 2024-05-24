@@ -114,33 +114,53 @@ class Users extends Controller
       'user' => $row
     ]);
   }
-
-  public function addbooks(){
-    
-   
-    if (count($_POST) > 0){
-      $book = new Book;
-      if (!empty(basename($_FILES['Picture']['name']))){
-        $_POST['Picture'] = basename($_FILES['Picture']['name']);
-      }
-      $book->insert($_POST);
-      $lastId = $book->lastId;
-      if  (!empty($_POST['Picture'])){
-        $dir = 'assets/uploads/books_img/' . $lastId;
-        if (!is_dir($dir)){
-          mkdir($dir);
-        }
-
-        $imgFilename = $dir . '/' . $_POST['Picture'];
-        $tmpName = $_FILES['Picture']['tmp_name'];
-        $upload = move_uploaded_file($tmpName, $imgFilename);
-
-        if (!$upload){
-          $book->errors['Picture'] = 'Inserted but failed to upload the image';
-        }
-      }
-     
-      
+  public function editbook($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
     }
+
+    $errors = [];
+    $user = new Book();
+    $arr['id'] = $id;
+    $row = $user->first($arr);
+
+    if (count($_POST) > 0) {
+
+      if ($user->validate($_POST)) {
+
+        $user->update($id, $_POST);
+
+        redirect('books');
+      } else {
+        $errors = $user->errors;
+      }
+    }
+
+    $this->view('users/editbook', [
+      'book' => $row,
+      'errors' => $errors
+    ]);
+  }
+   public function deletebook($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
+    $user = new Book();
+    $arr['id'] = $id;
+    $row = $user->first($arr);
+
+    if (count($_POST) > 0) {
+
+      $user->delete($id);
+
+      redirect('books');
+    }
+
+    $this->view('users/deletebook', [
+      'book' => $row
+    ]);
   }
 }

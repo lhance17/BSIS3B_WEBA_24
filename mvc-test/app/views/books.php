@@ -43,7 +43,7 @@
   <h2 class="books-title">Lists of Books</h2>
 </div>
   <class="books-table">
-<table class="table table-striped-columns table-hover table-bordered table mx-auto p-2" style="width: 1000px ">
+<table class="table table-striped-columns table-hover table-bordered table mx-auto p-2" style="width: 1200px ">
 <tr>
       <th>Title</th>
       <th>Author</th>
@@ -62,8 +62,8 @@
             <img width="50px" height="50px" src="<?= ROOT ?>/assets/uploads/books_img/<?= $item->id ?>/<?= $item->Picture ?>" alt="">
           </td>
           <td>
-            <a href="<?= ROOT ?>/books/editbook/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
-            <a href="<?= ROOT ?>/books/deletebook/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="<?= ROOT ?>/users/editbook/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
+            <a href="<?= ROOT ?>/users/deletebook/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
       <?php } ?>

@@ -3,7 +3,7 @@
 <div class="container mt-5">
 
   <form action="" method="POST" class="w-50 mx-auto">
-    <h2>Edit User</h2>
+    <h2>Edit Book</h2>
 
     <?php if (!empty($errors)): ?>
 
@@ -22,15 +22,15 @@
 
     <div class="mb-2">
       <label for="">Title</label>
-      <input name="Title" value="<?= $books->Title ?>" type="text" class="form-control">
+      <input name="Title" value="<?= $book->Title ?>" type="text" class="form-control">
     </div>
     <div class="mb-2">
       <label for="">Author</label>
-      <input name="Author" value="<?= $books->Author ?>" type="text" class="form-control">
+      <input name="Author" value="<?= $book->Author ?>" type="text" class="form-control">
     </div>
     <div class="mb-2">
       <label for="">Year_Publish</label>
-      <input name="email" value="<?= $book->Year_Publish ?>" type="email" class="form-control">
+      <input name="Year_Publish" value="<?= $book->Year_Publish ?>" type="text" class="form-control">
     </div>
     
 

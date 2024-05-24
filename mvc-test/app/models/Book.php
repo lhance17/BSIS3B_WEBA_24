@@ -16,9 +16,9 @@ class Book extends Model
       $this->errors['Author'] = 'Author is required.';
     }
 
-    if (empty($data['Year Publish'])) {
+    if (empty($data['Year_Publish'])) {
 
-        $this->errors['Year Publish'] = 'Year Publish is required.';
+        $this->errors['Year_Publish'] = 'Year Publish is required.';
       
     }
 

@@ -46,8 +46,58 @@ class Books extends Controller
         ]);
       }
       else {
-        redirect('books');
+        redirect('books'); 
       }
     }
+  }
+  public function editbook($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
+    $errors = [];
+    $user = new Book();
+    $arr['id'] = $id;
+    $row = $book->first($arr);
+
+    if (count($_POST) > 0) {
+
+      if ($book->validate($_POST)) {
+
+        $book->update($id, $_POST);
+
+        redirect('books');
+      } else {
+        $errors = $book->errors;
+      }
+    }
+
+    $this->view('users/editbook', [
+      'book' => $row,
+      'errors' => $errors
+    ]);
+  }
+
+  public function deletebook($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
+    $x = new Book();
+    $arr['id'] = $id;
+    $row = $x->first($arr);
+
+    if (count($_POST) > 0) {
+
+      $x->deletebook($id);
+
+      redirect('books');
+    }
+
+    $this->view('users/deletebook', [
+      'book' => $row
+    ]);
   }
 }
