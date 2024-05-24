@@ -4,7 +4,7 @@ class Books_db
 {
   private function connect()
   {
-    // Table -> users, Fields -> Title, Author, Year Publish, Picture
+    //Table -> books, Fields -> Title, Author, Year_Publish, Picture
     $string = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
     $con = new PDO($string, DB_USER, DB_PASS);
     return $con;

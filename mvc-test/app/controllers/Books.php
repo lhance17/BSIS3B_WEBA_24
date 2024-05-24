@@ -6,93 +6,80 @@ class Books extends Controller
   {
     if (!Auth::logged_in()) {
       redirect('login');
+      redirect('login');
     }
 
-    $x = new User();
+    $x = new Book();
     $rows = $x->findAll();
 
-    $this->view('books/index', [
-      'books' => $rows
+    $this->view('books', [
+      'books' =>  $rows
     ]);
   }
 
-  public function create()
-  {
-    if (!Auth::logged_in()) {
-      redirect('login');
-    }
-
-    $errors = [];
-    $books = new Book();
-
-    if (count($_POST) > 0) {
-
-      if ($user->validate($_POST)) {
-
-        if (count($_FILES) > 0) {
-
-          $allowed[] = 'image/png';
-          $allowed[] = 'image/jpeg';
-
-          if ($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed)) {
-
-            $folder = 'assets/images/';
-            if (!file_exists($folder)) {
-              mkdir($folder, 0777, true);
-            }
-
-            $destination = $folder . $_FILES['image']['name'];
-            move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-            $_POST['image'] = $destination;
-          }
+  public function create(){
+    if (count($_POST) > 0){
+      $book = new Book;
+      if (!empty(basename($_FILES['Picture']['name']))){
+        $_POST['Picture'] = basename($_FILES['Picture']['name']);
+      }
+      $book->insert($_POST);
+      $lastId = $book->lastId;
+      if  (!empty($_POST['Picture'])){
+        $dir = 'assets/uploads/books_img/' . $lastId;
+        if (!is_dir($dir)){
+          mkdir($dir);
         }
 
-        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $_POST['token'] = random_string(60);
+        $imgFilename = $dir . '/' . $_POST['Picture'];
+        $tmpName = $_FILES['Picture']['tmp_name'];
+        $upload = move_uploaded_file($tmpName, $imgFilename);
 
-        $user->insert($_POST);
+        if (!$upload){
+          $book->errors['Picture'] = 'Inserted but failed to upload the image';
+        }
+      }
 
-        redirect('users');
-      } else {
-        $errors = $user->errors;
+      if (count($book->errors) > 0){
+        $this->view('books', [
+          'err' => $book->errors
+        ]);
+      }
+      else {
+        redirect('books'); 
       }
     }
-
-    $this->view('books/create', [
-      'errors' => $errors
-    ]);
   }
-
-  public function edit($id)
+  public function editbook($id)
   {
     if (!Auth::logged_in()) {
       redirect('login');
     }
 
     $errors = [];
-    $books = new Book();
+    $user = new Book();
     $arr['id'] = $id;
-    $row = $user->first($arr);
+    $row = $book->first($arr);
 
     if (count($_POST) > 0) {
 
-      if ($user->validate($_POST)) {
+      if ($book->validate($_POST)) {
 
-        $user->update($id, $_POST);
+        $book->update($id, $_POST);
 
         redirect('books');
       } else {
-        $errors = $user->errors;
+        $errors = $book->errors;
       }
     }
 
-    $this->view('books/edit', [
-      'user' => $row,
+    $this->view('users/editbook', [
+      'book' => $row,
       'errors' => $errors
     ]);
   }
 
-  public function delete($id)
+  public function deletebook($id)
   {
     if (!Auth::logged_in()) {
       redirect('login');
@@ -104,13 +91,13 @@ class Books extends Controller
 
     if (count($_POST) > 0) {
 
-      $x->delete($id);
+      $x->deletebook($id);
 
       redirect('books');
     }
 
-    $this->view('books/delete', [
-      'books' => $row
+    $this->view('users/deletebook', [
+      'book' => $row
     ]);
   }
 }

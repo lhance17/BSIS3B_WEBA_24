@@ -1,6 +1,6 @@
 <?php
 
-class Book extends models
+class Book extends Model
 {
   public function validate($data)
   {
@@ -16,9 +16,9 @@ class Book extends models
       $this->errors['Author'] = 'Author is required.';
     }
 
-    if (empty($data['Year Publish'])) {
+    if (empty($data['Year_Publish'])) {
 
-        $this->errors['Year Publish'] = 'Year Publish is required.';
+        $this->errors['Year_Publish'] = 'Year Publish is required.';
       
     }
 

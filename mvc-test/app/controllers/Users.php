@@ -62,6 +62,7 @@ class Users extends Controller
       'errors' => $errors
     ]);
   }
+  
 
   public function edit($id)
   {
@@ -111,6 +112,55 @@ class Users extends Controller
 
     $this->view('users/delete', [
       'user' => $row
+    ]);
+  }
+  public function editbook($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
+    $errors = [];
+    $user = new Book();
+    $arr['id'] = $id;
+    $row = $user->first($arr);
+
+    if (count($_POST) > 0) {
+
+      if ($user->validate($_POST)) {
+
+        $user->update($id, $_POST);
+
+        redirect('books');
+      } else {
+        $errors = $user->errors;
+      }
+    }
+
+    $this->view('users/editbook', [
+      'book' => $row,
+      'errors' => $errors
+    ]);
+  }
+   public function deletebook($id)
+  {
+    if (!Auth::logged_in()) {
+      redirect('login');
+    }
+
+    $user = new Book();
+    $arr['id'] = $id;
+    $row = $user->first($arr);
+
+    if (count($_POST) > 0) {
+
+      $user->delete($id);
+
+      redirect('books');
+    }
+
+    $this->view('users/deletebook', [
+      'book' => $row
     ]);
   }
 }

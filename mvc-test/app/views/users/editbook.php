@@ -18,19 +18,21 @@
 
     <?php endif; ?>
 
+  
 
     <div class="mb-2">
       <label for="">Title</label>
-      <input name="title" disabled value="<?= $books->title ?>" type="text" class="form-control">
+      <input name="Title" value="<?= $book->Title ?>" type="text" class="form-control">
     </div>
     <div class="mb-2">
       <label for="">Author</label>
-      <input name="author" disabled value="<?= $books->author ?>" type="text" class="form-control">
+      <input name="Author" value="<?= $book->Author ?>" type="text" class="form-control">
     </div>
     <div class="mb-2">
-      <label for="">Year Published</label>
-      <input name="published" disabled value="<?= $books->published ?>" type="text" class="form-control">
+      <label for="">Year_Publish</label>
+      <input name="Year_Publish" value="<?= $book->Year_Publish ?>" type="text" class="form-control">
     </div>
+    
 
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
